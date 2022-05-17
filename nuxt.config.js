@@ -3,47 +3,50 @@ export default {
   head: {
     title: '珠海市妇幼保健院',
     htmlAttrs: {
-      lang: 'zh-CN'
+      lang: 'zh-CN',
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-
+  router: {
+    extendRoutes(routes,resolve){
+      routes.push({
+        path:'/jinwandalaohu',
+        name:"fuck",
+        component:resolve(__dirname,'pages/inner/other.vue')
+      })
+    }
+  },
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    "@/assets/main.less"
-  ],
+  css: ['@/assets/main.less'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-  ],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-  ],
+  buildModules: [],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-        // https://go.nuxtjs.dev/bootstrap
-        'bootstrap-vue/nuxt',
-        // https://go.nuxtjs.dev/axios
-        '@nuxtjs/axios',
+    // https://go.nuxtjs.dev/bootstrap
+    'bootstrap-vue/nuxt',
+    // https://go.nuxtjs.dev/axios
+    '@nuxtjs/axios',
+    '@/plugins/request'
   ],
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: '/',
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  },
+  build: {},
+  target: 'static'
 }
